@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true  # This enables privilege escalation (sudo)
+  tasks:
+    - name: Uninstall Git
+      yum:
+        name: git
+        state: absent
+

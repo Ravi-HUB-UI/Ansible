@@ -1,0 +1,28 @@
+---
+- name: debug example playbook
+  hosts: localhost
+  vars:
+    app_name: "order-management"
+    replica_count: 2
+    resource_limits:
+      cpu: "120m"
+      memory: "128Mi"
+    debug_enabled: true
+    env: staging
+
+  tasks:
+    - name: Print application name
+      debug:
+        msg: "The application name is {{ app_name }}"
+      when: debug_enabled
+
+    - name: Print replica count
+      debug:
+        msg: "The replica count is {{ replica_count }}"
+      when: debug_enabled
+
+    - name: Print resource limits
+      debug:
+        msg: "CPU limit is {{ resource_limits.cpu }} and Memory limit is {{ resource_limits.memory }}"
+      when: debug_enabled
+

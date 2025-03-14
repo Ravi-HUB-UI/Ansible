@@ -1,0 +1,14 @@
+---
+- name: Installing all required packages
+  hosts: localhost
+  become: true
+  tasks:
+    - name: installing packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - zip
+        - tree
+

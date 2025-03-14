@@ -1,0 +1,9 @@
+- name: Test Ansible Vault
+  hosts: all
+  vars_files:
+    - secret.yaml
+  tasks:
+    - name: Print sensitive variables
+      debug:
+        msg: "The database password is {{ db_password }}"
+

@@ -1,0 +1,31 @@
+---
+- name: Installing HTTP server conditionally for Ubuntu and Red Hat
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Apache on Ubuntu
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install Apache on Red Hat
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution == "RedHat"
+
+    - name: Start Apache on Ubuntu
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Start Apache on Red Hat
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "RedHat"
+

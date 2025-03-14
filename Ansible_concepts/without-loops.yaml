@@ -1,0 +1,20 @@
+---
+- name: UnInstalling all required packages
+  hosts: localhost
+  become: true
+  tasks:
+    - name: UnInstall git
+      yum:
+        name: git
+        state: absent
+
+    - name: UnInstall zip
+      yum:
+        name: zip
+        state: absent
+
+    - name: UnInstall tree
+      yum:
+        name: tree
+        state: absent
+

@@ -1,0 +1,6 @@
+- name: Apply HTTPD role(Install and configure)
+  hosts: all
+  become: true
+  roles:
+    - httpd
+

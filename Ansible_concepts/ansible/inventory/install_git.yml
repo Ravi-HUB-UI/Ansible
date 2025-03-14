@@ -1,0 +1,11 @@
+- name: Install git on Slave machines
+  hosts: tag__Slave_1,tag__Slave_2  # <-- Corrected group names
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Install git on Slave machines
+      yum:
+        name: git
+        state: present
+
